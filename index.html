@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ember &amp; Roast — Artisan Coffee Co.</title>
+
+  <!-- Google Fonts: Playfair Display (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Deferred JS — runs after HTML is parsed -->
+  <script src="script.js" defer></script>
+</head>
+
+<body class="light-mode">
+
+  <!-- ===================== HEADER / NAV ===================== -->
+  <header id="site-header">
+    <div class="header-inner">
+
+      <!-- Wordmark -->
+      <a href="#hero" class="logo" aria-label="Ember and Roast home">
+        <span class="logo-ember">Ember</span><span class="logo-amp">&amp;</span><span class="logo-roast">Roast</span>
+      </a>
+
+      <!-- Primary navigation -->
+      <nav id="main-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#order">Quick Order</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Dark / Light mode toggle -->
+      <div class="theme-toggle-wrap">
+        <span class="toggle-label" id="theme-label">Light</span>
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <span class="toggle-track">
+            <span class="toggle-thumb"></span>
+          </span>
+        </button>
+      </div>
+
+    </div><!-- /.header-inner -->
+  </header>
+
+  <main>
+
+    <!-- ===================== HERO ===================== -->
+    <section id="hero" class="hero" aria-label="Hero">
+      <div class="hero-bg-text" aria-hidden="true">COFFEE</div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">Est. 2018 — San Diego, CA</p>
+        <h1 class="hero-headline">
+          Coffee roasted<br />
+          <em>with intention.</em>
+        </h1>
+        <p class="hero-sub">
+          Single-origin beans, small-batch roasting, and a warm space to
+          slow down. Every cup tells a story from farm to your hands.
+        </p>
+        <div class="hero-cta-row">
+          <a href="#order" class="btn btn-primary">Order Now</a>
+          <a href="#about" class="btn btn-ghost">Our Story</a>
+        </div>
+      </div>
+      <figure class="hero-image-wrap" aria-hidden="true">
+        <!-- Decorative coffee cup illustration using CSS -->
+        <div class="cup-art">
+          <div class="cup-saucer"></div>
+          <div class="cup-body">
+            <div class="cup-liquid"></div>
+            <div class="cup-foam"></div>
+            <div class="cup-latte-art"></div>
+          </div>
+          <div class="cup-handle"></div>
+          <div class="steam steam-1"></div>
+          <div class="steam steam-2"></div>
+          <div class="steam steam-3"></div>
+        </div>
+      </figure>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section id="about" class="about" aria-labelledby="about-heading">
+      <div class="about-inner">
+        <div class="about-text">
+          <p class="section-eyebrow">Our Story</p>
+          <h2 id="about-heading">From a small roastery<br /><em>to a community ritual.</em></h2>
+          <p>
+            Ember &amp; Roast was founded in 2018 by two lifelong coffee lovers
+            who believed that the space between "good" and "extraordinary" is
+            patience. We source our beans directly from independent farms across
+            Ethiopia, Colombia, and Guatemala — relationships built over years,
+            not contracts.
+          </p>
+          <p>
+            Every roast profile is dialed in by hand. We don't chase trends; we
+            chase flavour. Walk through our door and you'll find a room full of
+            people who agree: coffee is worth slowing down for.
+          </p>
+          <ul class="about-stats">
+            <li><strong>6+</strong><span>Years roasting</span></li>
+            <li><strong>12</strong><span>Origin farms</span></li>
+            <li><strong>3</strong><span>Locations</span></li>
+          </ul>
+        </div>
+        <div class="about-visual" aria-hidden="true">
+          <div class="about-card about-card-1">
+            <div class="roast-icon">☕</div>
+            <p>Direct trade,<br />always.</p>
+          </div>
+          <div class="about-card about-card-2">
+            <div class="roast-icon">🌿</div>
+            <p>Sustainably<br />sourced.</p>
+          </div>
+          <div class="about-card about-card-3">
+            <div class="roast-icon">🔥</div>
+            <p>Small batch.<br />Big flavour.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MENU ===================== -->
+    <section id="menu" class="menu-section" aria-labelledby="menu-heading">
+      <div class="section-header">
+        <p class="section-eyebrow">The Menu</p>
+        <h2 id="menu-heading">Drinks crafted<br /><em>for every moment.</em></h2>
+      </div>
+      <div class="menu-grid">
+
+        <article class="menu-item">
+          <div class="menu-item-icon">☕</div>
+          <h3>Single-Origin Espresso</h3>
+          <p>A focused 30ml pull of our rotating single-origin selection. Expect clarity, sweetness, and a lingering finish.</p>
+          <span class="menu-price">$3.50</span>
+        </article>
+
+        <article class="menu-item">
+          <div class="menu-item-icon">🍵</div>
+          <h3>Cappuccino</h3>
+          <p>Equal thirds espresso, steamed milk, and thick velvety foam. A traditional balance done with exceptional beans.</p>
+          <span class="menu-price">$5.00</span>
+        </article>
+
+        <article class="menu-item featured">
+          <div class="menu-item-badge">Fan Favourite</div>
+          <div class="menu-item-icon">🧊</div>
+          <h3>Cold Brew Concentrate</h3>
+          <p>18-hour cold steep of our dark-roast blend. Bold, smooth, and zero bitterness — served over ice with oat milk.</p>
+          <span class="menu-price">$6.00</span>
+        </article>
+
+        <article class="menu-item">
+          <div class="menu-item-icon">☁️</div>
+          <h3>Oat Milk Latte</h3>
+          <p>Double shot of espresso with creamy oat milk, steamed to perfection and finished with a delicate latte art pour.</p>
+          <span class="menu-price">$5.50</span>
+        </article>
+
+        <article class="menu-item">
+          <div class="menu-item-icon">🥐</div>
+          <h3>Almond Croissant</h3>
+          <p>Buttery, laminated pastry filled with rich frangipane and topped with toasted almond flakes. Baked fresh each morning.</p>
+          <span class="menu-price">$4.00</span>
+        </article>
+
+        <article class="menu-item">
+          <div class="menu-item-icon">📦</div>
+          <h3>House Blend Bag (250g)</h3>
+          <p>Take the roastery home. Our signature house blend — notes of dark chocolate, dried cherry, and walnut. Bag of 250g.</p>
+          <span class="menu-price">$18.00</span>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===================== COST CALCULATOR / QUICK ORDER ===================== -->
+    <section id="order" class="order-section" aria-labelledby="order-heading">
+      <div class="section-header">
+        <p class="section-eyebrow">Quick Order</p>
+        <h2 id="order-heading">Build your<br /><em>perfect order.</em></h2>
+        <p class="section-sub">Click the + button to add items to your cart. Free shipping on orders over $30.</p>
+      </div>
+
+      <div class="order-layout">
+
+        <!-- Product cards -->
+        <div class="product-grid" id="product-grid" aria-label="Products">
+
+          <!-- Product cards are rendered by JS, but we provide the HTML structure here
+               for validation and accessibility — JS will populate these at runtime -->
+
+          <div class="product-card" data-product-id="0" data-price="3.50" data-name="Single-Origin Espresso">
+            <div class="product-card-icon">☕</div>
+            <div class="product-card-info">
+              <h3>Single-Origin Espresso</h3>
+              <p>Rotating single-origin pull — bright, sweet, memorable.</p>
+              <span class="product-price">$3.50</span>
+            </div>
+            <div class="product-card-controls">
+              <button class="qty-btn minus-btn" aria-label="Remove one Single-Origin Espresso">−</button>
+              <span class="qty-display" aria-live="polite" aria-label="Quantity">0</span>
+              <button class="qty-btn plus-btn" aria-label="Add one Single-Origin Espresso">+</button>
+            </div>
+          </div>
+
+          <div class="product-card" data-product-id="1" data-price="5.00" data-name="Cappuccino">
+            <div class="product-card-icon">🍵</div>
+            <div class="product-card-info">
+              <h3>Cappuccino</h3>
+              <p>Classic ratio, exceptional beans, thick foam.</p>
+              <span class="product-price">$5.00</span>
+            </div>
+            <div class="product-card-controls">
+              <button class="qty-btn minus-btn" aria-label="Remove one Cappuccino">−</button>
+              <span class="qty-display" aria-live="polite" aria-label="Quantity">0</span>
+              <button class="qty-btn plus-btn" aria-label="Add one Cappuccino">+</button>
+            </div>
+          </div>
+
+          <div class="product-card" data-product-id="2" data-price="6.00" data-name="Cold Brew Concentrate">
+            <div class="product-card-icon">🧊</div>
+            <div class="product-card-info">
+              <h3>Cold Brew Concentrate</h3>
+              <p>18-hour steep, bold and smooth — zero bitterness.</p>
+              <span class="product-price">$6.00</span>
+            </div>
+            <div class="product-card-controls">
+              <button class="qty-btn minus-btn" aria-label="Remove one Cold Brew">−</button>
+              <span class="qty-display" aria-live="polite" aria-label="Quantity">0</span>
+              <button class="qty-btn plus-btn" aria-label="Add one Cold Brew">+</button>
+            </div>
+          </div>
+
+          <div class="product-card" data-product-id="3" data-price="5.50" data-name="Oat Milk Latte">
+            <div class="product-card-icon">☁️</div>
+            <div class="product-card-info">
+              <h3>Oat Milk Latte</h3>
+              <p>Double shot, creamy oat, finished with latte art.</p>
+              <span class="product-price">$5.50</span>
+            </div>
+            <div class="product-card-controls">
+              <button class="qty-btn minus-btn" aria-label="Remove one Oat Milk Latte">−</button>
+              <span class="qty-display" aria-live="polite" aria-label="Quantity">0</span>
+              <button class="qty-btn plus-btn" aria-label="Add one Oat Milk Latte">+</button>
+            </div>
+          </div>
+
+          <div class="product-card" data-product-id="4" data-price="4.00" data-name="Almond Croissant">
+            <div class="product-card-icon">🥐</div>
+            <div class="product-card-info">
+              <h3>Almond Croissant</h3>
+              <p>Buttery, flaky, frangipane-filled. Baked fresh daily.</p>
+              <span class="product-price">$4.00</span>
+            </div>
+            <div class="product-card-controls">
+              <button class="qty-btn minus-btn" aria-label="Remove one Almond Croissant">−</button>
+              <span class="qty-display" aria-live="polite" aria-label="Quantity">0</span>
+              <button class="qty-btn plus-btn" aria-label="Add one Almond Croissant">+</button>
+            </div>
+          </div>
+
+          <div class="product-card" data-product-id="5" data-price="18.00" data-name="House Blend Bag (250g)">
+            <div class="product-card-icon">📦</div>
+            <div class="product-card-info">
+              <h3>House Blend Bag (250g)</h3>
+              <p>Dark choc, dried cherry, walnut — take the roastery home.</p>
+              <span class="product-price">$18.00</span>
+            </div>
+            <div class="product-card-controls">
+              <button class="qty-btn minus-btn" aria-label="Remove one House Blend Bag">−</button>
+              <span class="qty-display" aria-live="polite" aria-label="Quantity">0</span>
+              <button class="qty-btn plus-btn" aria-label="Add one House Blend Bag">+</button>
+            </div>
+          </div>
+
+        </div><!-- /#product-grid -->
+
+        <!-- Order summary / cart -->
+        <aside class="order-summary" id="order-summary" aria-label="Order summary">
+          <h3 class="summary-title">Your Order</h3>
+
+          <div class="summary-line-items" id="summary-line-items" aria-live="polite">
+            <p class="cart-empty-msg" id="cart-empty-msg">Your cart is empty. Add something delicious above!</p>
+          </div>
+
+          <div class="summary-totals" id="summary-totals" aria-live="polite">
+            <div class="totals-row">
+              <span>Subtotal</span>
+              <span id="subtotal-display">$0.00</span>
+            </div>
+            <div class="totals-row">
+              <span>Shipping</span>
+              <span id="shipping-display">$5.99</span>
+            </div>
+            <div class="totals-row">
+              <span>Tax (8.5%)</span>
+              <span id="tax-display">$0.00</span>
+            </div>
+            <div class="totals-row totals-total">
+              <span>Total</span>
+              <span id="total-display">$5.99</span>
+            </div>
+          </div>
+
+          <button class="btn btn-primary checkout-btn" id="checkout-btn" aria-label="Checkout">
+            Checkout →
+          </button>
+
+          <!-- Checkout confirmation message (hidden until checkout) -->
+          <div class="checkout-confirm" id="checkout-confirm" aria-live="polite" hidden>
+            <p class="confirm-icon">🎉</p>
+            <p class="confirm-heading">Order placed!</p>
+            <p id="confirm-total-msg"></p>
+            <p class="confirm-sub">Thank you for your order. We'll have it ready shortly.</p>
+          </div>
+
+          <!-- Empty cart warning (hidden until triggered) -->
+          <p class="cart-warning" id="cart-warning" aria-live="assertive" hidden>
+            Please add at least one item to your cart before checking out.
+          </p>
+
+        </aside>
+
+      </div><!-- /.order-layout -->
+    </section>
+
+    <!-- ===================== CONTACT FORM ===================== -->
+    <section id="contact" class="contact-section" aria-labelledby="contact-heading">
+      <div class="contact-inner">
+
+        <div class="contact-intro">
+          <p class="section-eyebrow">Get in Touch</p>
+          <h2 id="contact-heading">We'd love to<br /><em>hear from you.</em></h2>
+          <p>
+            Whether you're interested in wholesale coffee, catering an event,
+            or just want to tell us about your favourite brew — we're all ears.
+          </p>
+          <address class="contact-details">
+            <p>📍 2241 India St, San Diego, CA 92101</p>
+            <p>📞 <a href="tel:+16195550148">(619) 555-0148</a></p>
+            <p>✉️ <a href="mailto:hello@emberandroast.com">hello@emberandroast.com</a></p>
+            <p>🕒 Mon – Fri: 7am – 6pm · Sat – Sun: 8am – 4pm</p>
+          </address>
+        </div>
+
+        <!-- Contact form -->
+        <div class="contact-form-wrap">
+          <form id="contact-form" novalidate aria-label="Contact form">
+
+            <!-- Full name -->
+            <div class="form-group">
+              <label for="full-name">Full Name <span class="required-star" aria-hidden="true">*</span></label>
+              <input
+                type="text"
+                id="full-name"
+                name="fullName"
+                placeholder="Jane Smith"
+                autocomplete="name"
+                aria-required="true"
+                aria-describedby="full-name-error"
+              />
+              <span class="form-error" id="full-name-error" role="alert" aria-live="polite"></span>
+            </div>
+
+            <!-- Phone number -->
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="(619) 555-0100"
+                autocomplete="tel"
+                aria-describedby="phone-error"
+              />
+              <span class="form-error" id="phone-error" role="alert" aria-live="polite"></span>
+            </div>
+
+            <!-- Email address -->
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="jane@example.com"
+                autocomplete="email"
+                aria-describedby="email-error"
+              />
+              <span class="form-error" id="email-error" role="alert" aria-live="polite"></span>
+            </div>
+
+            <!-- Contact preference radios -->
+            <fieldset class="form-group radio-group" id="contact-pref-group" aria-describedby="contact-pref-error">
+              <legend>
+                Preferred Contact Method <span class="required-star" aria-hidden="true">*</span>
+              </legend>
+              <div class="radio-options">
+                <label class="radio-label">
+                  <input type="radio" name="contactPref" value="phone" id="pref-phone" />
+                  <span class="radio-custom" aria-hidden="true"></span>
+                  Phone
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="contactPref" value="email" id="pref-email" />
+                  <span class="radio-custom" aria-hidden="true"></span>
+                  Email
+                </label>
+              </div>
+              <span class="form-error" id="contact-pref-error" role="alert" aria-live="polite"></span>
+            </fieldset>
+
+            <!-- Comments -->
+            <div class="form-group">
+              <label for="comments">
+                Message / Comments <span class="required-star" aria-hidden="true">*</span>
+              </label>
+              <textarea
+                id="comments"
+                name="comments"
+                rows="5"
+                placeholder="Tell us what's on your mind..."
+                aria-required="true"
+                aria-describedby="comments-error"
+              ></textarea>
+              <span class="form-error" id="comments-error" role="alert" aria-live="polite"></span>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">
+              Send Message →
+            </button>
+
+          </form><!-- /#contact-form -->
+
+          <!-- Thank you message (hidden until valid submit) -->
+          <div class="thank-you-msg" id="thank-you-msg" hidden aria-live="polite">
+            <p class="ty-icon">✅</p>
+            <h3 class="ty-heading">Message received!</h3>
+            <p>Thanks so much, <strong id="ty-name"></strong>. We'll be in touch with you via
+              <strong id="ty-pref"></strong>
+              (<strong id="ty-contact"></strong>) soon.
+            </p>
+            <blockquote class="ty-comment" id="ty-comment"></blockquote>
+          </div>
+
+        </div><!-- /.contact-form-wrap -->
+
+      </div><!-- /.contact-inner -->
+    </section>
+
+  </main><!-- /main -->
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer id="site-footer">
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <a href="#hero" class="logo" aria-label="Ember and Roast home">
+          <span class="logo-ember">Ember</span><span class="logo-amp">&amp;</span><span class="logo-roast">Roast</span>
+        </a>
+        <p>Artisan Coffee Co. — San Diego, CA</p>
+        <p>Small batch. Big love. Est. 2018.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#order">Quick Order</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-hours">
+        <h4>Hours</h4>
+        <ul>
+          <li>Mon – Fri: 7am – 6pm</li>
+          <li>Saturday: 8am – 4pm</li>
+          <li>Sunday: 8am – 4pm</li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="#" aria-label="Instagram">Instagram</a></li>
+          <li><a href="#" aria-label="Twitter / X">Twitter / X</a></li>
+          <li><a href="#" aria-label="Facebook">Facebook</a></li>
+        </ul>
+      </div>
+
+    </div><!-- /.footer-inner -->
+    <div class="footer-bottom">
+      <p>&copy; 2024 Ember &amp; Roast Artisan Coffee Co. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

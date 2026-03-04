@@ -1,0 +1,1309 @@
+/*
+ * ============================================================
+ *  EMBER & ROAST — ARTISAN COFFEE CO.
+ *  styles.css
+ *  Author: Student Project
+ *  Description: Full stylesheet for Ember & Roast single-page
+ *               site. Supports light and dark mode via class
+ *               toggle on <body>.
+ * ============================================================
+ */
+
+/* ============================================================
+   0. CSS CUSTOM PROPERTIES (DESIGN TOKENS)
+   ============================================================ */
+
+/* --- Light Mode (default) --- */
+.light-mode {
+  /* Backgrounds */
+  --bg-page:         #FAF7F2;   /* warm cream */
+  --bg-section-alt:  #F2EDE4;   /* slightly deeper cream */
+  --bg-card:         #FFFFFF;
+  --bg-header:       rgba(250, 247, 242, 0.92);
+  --bg-footer:       #1C1209;
+  --bg-hero:         #FAF7F2;
+
+  /* Text */
+  --text-primary:    #1C1209;   /* near-black espresso */
+  --text-secondary:  #5C4A30;   /* warm medium brown */
+  --text-muted:      #9C8060;   /* muted tan */
+  --text-on-dark:    #FAF7F2;
+
+  /* Brand accent */
+  --accent:          #C4622A;   /* burnt amber */
+  --accent-hover:    #A84E1E;
+  --accent-light:    #F2D5BC;
+
+  /* Borders */
+  --border:          #E0D5C5;
+  --border-strong:   #C4A882;
+
+  /* Shadows */
+  --shadow-sm:       0 2px 8px rgba(28, 18, 9, 0.08);
+  --shadow-md:       0 6px 24px rgba(28, 18, 9, 0.10);
+  --shadow-lg:       0 16px 48px rgba(28, 18, 9, 0.14);
+
+  /* Toggle specific */
+  --toggle-track:    #C4A882;
+  --toggle-thumb:    #FFFFFF;
+  --toggle-active:   #1C1209;
+}
+
+/* --- Dark Mode --- */
+.dark-mode {
+  --bg-page:         #0F0A05;
+  --bg-section-alt:  #1A1108;
+  --bg-card:         #241709;
+  --bg-header:       rgba(15, 10, 5, 0.92);
+  --bg-footer:       #050300;
+  --bg-hero:         #0F0A05;
+
+  --text-primary:    #F0E6D3;
+  --text-secondary:  #C4A882;
+  --text-muted:      #7A6448;
+  --text-on-dark:    #F0E6D3;
+
+  --accent:          #E07840;
+  --accent-hover:    #F08C52;
+  --accent-light:    #3D1F0A;
+
+  --border:          #2E1F0D;
+  --border-strong:   #5C3D1A;
+
+  --shadow-sm:       0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md:       0 6px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg:       0 16px 48px rgba(0, 0, 0, 0.55);
+
+  --toggle-track:    #5C3D1A;
+  --toggle-thumb:    #E07840;
+  --toggle-active:   #E07840;
+}
+
+/* ============================================================
+   1. CSS RESET & BASE
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.7;
+  width: 1280px;
+  margin: 0 auto;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+address {
+  font-style: normal;
+}
+
+/* ============================================================
+   2. TYPOGRAPHY HELPERS
+   ============================================================ */
+
+h1, h2, h3, h4 {
+  font-family: "Playfair Display", serif;
+  line-height: 1.15;
+}
+
+h1 { font-size: clamp(2.8rem, 5vw, 4.8rem); font-weight: 900; }
+h2 { font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 700; }
+h3 { font-size: 1.25rem; font-weight: 700; }
+h4 { font-size: 0.95rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+
+em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+/* Section eyebrow label */
+.section-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+/* ============================================================
+   3. BUTTONS
+   ============================================================ */
+
+.btn {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  border-radius: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  border: 2px solid transparent;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease,
+              transform 0.15s ease, box-shadow 0.25s ease;
+  white-space: nowrap;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Primary: filled amber */
+.btn-primary {
+  background-color: var(--accent);
+  color: #FFF;
+  border-color: var(--accent);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Ghost: transparent with border */
+.btn-ghost {
+  background-color: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+.btn-ghost:hover {
+  background-color: var(--bg-card);
+  border-color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   4. HEADER
+   ============================================================ */
+
+#site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--bg-header);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.35s ease, border-color 0.35s ease;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3rem;
+  height: 72px;
+}
+
+/* Wordmark */
+.logo {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.logo-ember  { color: var(--text-primary); }
+.logo-amp    { color: var(--accent); margin: 0 0.25rem; }
+.logo-roast  { color: var(--text-primary); }
+
+/* Nav links */
+#main-nav ul {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+#main-nav a {
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  position: relative;
+  padding-bottom: 3px;
+  transition: color 0.2s ease;
+}
+
+#main-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent);
+  transition: width 0.25s ease;
+}
+
+#main-nav a:hover {
+  color: var(--accent);
+}
+
+#main-nav a:hover::after,
+#main-nav a:focus::after {
+  width: 100%;
+}
+
+/* Theme toggle */
+.theme-toggle-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.toggle-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  min-width: 2.5rem;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-track {
+  display: block;
+  width: 48px;
+  height: 26px;
+  background-color: var(--toggle-track);
+  border-radius: 13px;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-thumb {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: var(--toggle-thumb);
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+.dark-mode .toggle-thumb {
+  transform: translateX(22px);
+}
+
+/* ============================================================
+   5. HERO SECTION
+   ============================================================ */
+
+.hero {
+  position: relative;
+  min-height: 92vh;
+  background-color: var(--bg-hero);
+  display: flex;
+  align-items: center;
+  padding: 6rem 3rem;
+  overflow: hidden;
+  gap: 4rem;
+  transition: background-color 0.35s ease;
+}
+
+/* Giant background text */
+.hero-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Playfair Display", serif;
+  font-size: 22rem;
+  font-weight: 900;
+  color: var(--bg-section-alt);
+  letter-spacing: -0.04em;
+  pointer-events: none;
+  user-select: none;
+  transition: color 0.35s ease;
+  white-space: nowrap;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+}
+
+.hero-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+}
+
+.hero-headline {
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  max-width: 440px;
+  margin-bottom: 2.5rem;
+}
+
+.hero-cta-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* CSS cup illustration */
+.hero-image-wrap {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cup-art {
+  position: relative;
+  width: 220px;
+  height: 260px;
+  margin: 0 auto;
+}
+
+.cup-saucer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 18px;
+  background: var(--accent-light);
+  border-radius: 50%;
+  border: 2px solid var(--border-strong);
+}
+
+.cup-body {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 160px;
+  background: var(--bg-card);
+  border-radius: 0 0 30px 30px;
+  border: 3px solid var(--border-strong);
+  overflow: hidden;
+}
+
+.cup-liquid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(180deg, #8B4513 0%, #5C2C0A 100%);
+}
+
+.cup-foam {
+  position: absolute;
+  top: 55px;
+  left: 0;
+  right: 0;
+  height: 18px;
+  background: #F5DEB3;
+  border-radius: 50%;
+}
+
+.cup-latte-art {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(ellipse, #8B4513 30%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.cup-handle {
+  position: absolute;
+  bottom: 40px;
+  right: 10px;
+  width: 35px;
+  height: 55px;
+  border: 6px solid var(--border-strong);
+  border-left: none;
+  border-radius: 0 30px 30px 0;
+}
+
+/* Steam animations */
+.steam {
+  position: absolute;
+  width: 6px;
+  border-radius: 3px;
+  background: var(--accent-light);
+  animation: steam-rise 3s ease-in-out infinite;
+  opacity: 0;
+}
+
+.steam-1 { left: 60px;  top: -10px; height: 40px; animation-delay: 0s; }
+.steam-2 { left: 90px;  top: -20px; height: 55px; animation-delay: 0.8s; }
+.steam-3 { left: 120px; top: -10px; height: 40px; animation-delay: 1.6s; }
+
+@keyframes steam-rise {
+  0%   { transform: translateY(0)   scaleX(1); opacity: 0; }
+  20%  { opacity: 0.6; }
+  60%  { opacity: 0.4; }
+  100% { transform: translateY(-60px) scaleX(1.4); opacity: 0; }
+}
+
+/* ============================================================
+   6. ABOUT SECTION
+   ============================================================ */
+
+.about {
+  background-color: var(--bg-section-alt);
+  padding: 8rem 3rem;
+  transition: background-color 0.35s ease;
+}
+
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.about-text h2 {
+  margin-bottom: 1.5rem;
+}
+
+.about-text p {
+  margin-bottom: 1.25rem;
+  max-width: 480px;
+}
+
+/* Stats row */
+.about-stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.about-stats li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.about-stats strong {
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.about-stats span {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* About cards */
+.about-visual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.25rem;
+}
+
+.about-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.35s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.about-card-3 {
+  grid-column: 1 / -1;
+}
+
+.roast-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.about-card p {
+  font-family: "Playfair Display", serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* ============================================================
+   7. MENU SECTION
+   ============================================================ */
+
+.menu-section {
+  padding: 8rem 3rem;
+  background-color: var(--bg-page);
+  transition: background-color 0.35s ease;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-header h2 {
+  margin-bottom: 1rem;
+}
+
+.section-sub {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.menu-item {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.35s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.menu-item.featured {
+  border-color: var(--accent);
+  background-color: var(--accent-light);
+}
+
+.menu-item-badge {
+  position: absolute;
+  top: -1px;
+  right: 1.5rem;
+  background-color: var(--accent);
+  color: #FFF;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+}
+
+.menu-item-icon {
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+.menu-item h3 {
+  margin-bottom: 0.6rem;
+  color: var(--text-primary);
+}
+
+.menu-item p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.menu-price {
+  font-family: "Playfair Display", serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ============================================================
+   8. COST CALCULATOR / ORDER SECTION
+   ============================================================ */
+
+.order-section {
+  padding: 8rem 3rem;
+  background-color: var(--bg-section-alt);
+  transition: background-color 0.35s ease;
+}
+
+.order-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 3rem;
+  max-width: 1140px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* Product cards */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.product-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.35s ease;
+}
+
+.product-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Highlight card when item is in cart */
+.product-card.in-cart {
+  border-color: var(--accent);
+  background-color: var(--accent-light);
+}
+
+.product-card-icon {
+  font-size: 1.75rem;
+}
+
+.product-card-info h3 {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  color: var(--text-primary);
+}
+
+.product-card-info p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.product-price {
+  font-family: "Playfair Display", serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* Quantity controls */
+.product-card-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.qty-btn {
+  width: 34px;
+  height: 34px;
+  background-color: var(--bg-page);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  border-radius: 0;
+  line-height: 1;
+}
+
+.qty-btn:hover {
+  background-color: var(--accent);
+  color: #FFF;
+  border-color: var(--accent);
+  transform: scale(1.08);
+}
+
+.qty-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.qty-display {
+  font-family: "Playfair Display", serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+/* Order Summary sidebar */
+.order-summary {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  position: sticky;
+  top: 90px;
+  transition: background-color 0.35s ease, border-color 0.35s ease;
+}
+
+.summary-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.cart-empty-msg {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  font-style: italic;
+  padding: 0.5rem 0 1rem;
+}
+
+/* Line items in cart */
+.summary-line-items {
+  min-height: 60px;
+  margin-bottom: 1.25rem;
+}
+
+.cart-line-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.cart-line-item-name {
+  flex: 1;
+  padding-right: 0.5rem;
+}
+
+.cart-line-item-price {
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* Totals */
+.summary-totals {
+  padding-top: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.totals-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  padding: 0.35rem 0;
+}
+
+.totals-total {
+  font-family: "Playfair Display", serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  border-top: 2px solid var(--border-strong);
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+}
+
+.checkout-btn {
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Checkout confirmation */
+.checkout-confirm {
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.confirm-icon {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.confirm-heading {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+#confirm-total-msg {
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.confirm-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+/* Empty cart warning */
+.cart-warning {
+  background-color: #FEE2E2;
+  color: #B91C1C;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid #B91C1C;
+  margin-top: 1rem;
+}
+
+.dark-mode .cart-warning {
+  background-color: #3B0F0F;
+  color: #FCA5A5;
+  border-color: #FCA5A5;
+}
+
+/* ============================================================
+   9. CONTACT SECTION
+   ============================================================ */
+
+.contact-section {
+  padding: 8rem 3rem;
+  background-color: var(--bg-page);
+  transition: background-color 0.35s ease;
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  max-width: 1140px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.contact-intro h2 {
+  margin-bottom: 1.25rem;
+}
+
+.contact-intro > p {
+  margin-bottom: 2rem;
+  max-width: 400px;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.contact-details p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.contact-details a {
+  color: var(--accent);
+  transition: color 0.2s ease;
+}
+
+.contact-details a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* Form */
+.contact-form-wrap {
+  position: relative;
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-group label,
+.radio-group legend {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.03em;
+}
+
+.required-star {
+  color: var(--accent);
+}
+
+/* Text / tel / email inputs and textarea */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  border-radius: 0;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.35s ease;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+/* Placeholder colour */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* Error state */
+.form-group input.has-error,
+.form-group textarea.has-error {
+  border-color: #DC2626;
+  background-color: #FEF2F2;
+}
+
+.dark-mode .form-group input.has-error,
+.dark-mode .form-group textarea.has-error {
+  background-color: #2D0A0A;
+  border-color: #F87171;
+}
+
+/* Error message */
+.form-error {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #DC2626;
+  min-height: 1.1rem;
+  display: block;
+}
+
+.dark-mode .form-error {
+  color: #FCA5A5;
+}
+
+/* Radio group */
+.radio-group {
+  border: none;
+}
+
+.radio-group legend {
+  margin-bottom: 0.75rem;
+}
+
+.radio-options {
+  display: flex;
+  gap: 1.75rem;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  user-select: none;
+}
+
+/* Hide native radio */
+.radio-label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Custom radio circle */
+.radio-custom {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border-strong);
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease;
+}
+
+.radio-custom::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.radio-label input[type="radio"]:checked + .radio-custom {
+  border-color: var(--accent);
+}
+
+.radio-label input[type="radio"]:checked + .radio-custom::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.radio-label input[type="radio"]:focus-visible + .radio-custom {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Submit button full width */
+.btn-submit {
+  align-self: flex-start;
+  padding: 0.9rem 2.5rem;
+}
+
+/* Thank-you message */
+.thank-you-msg {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: background-color 0.35s ease;
+}
+
+.ty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.ty-heading {
+  font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.thank-you-msg p {
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.ty-comment {
+  margin-top: 1.25rem;
+  padding: 1rem 1.5rem;
+  background-color: var(--bg-section-alt);
+  border-left: 3px solid var(--accent);
+  font-style: italic;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  text-align: left;
+}
+
+/* ============================================================
+   10. FOOTER
+   ============================================================ */
+
+#site-footer {
+  background-color: var(--bg-footer);
+  color: var(--text-on-dark);
+  transition: background-color 0.35s ease;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 4rem;
+  padding: 5rem 3rem 4rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Footer brand */
+.footer-brand .logo {
+  margin-bottom: 1rem;
+  display: inline-flex;
+}
+
+.footer-brand .logo-ember,
+.footer-brand .logo-roast {
+  color: var(--text-on-dark);
+}
+
+.footer-brand p {
+  color: rgba(240, 230, 211, 0.55);
+  font-size: 0.88rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Footer nav columns */
+.footer-nav h4,
+.footer-hours h4,
+.footer-social h4 {
+  color: var(--text-on-dark);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.footer-nav ul li,
+.footer-hours ul li,
+.footer-social ul li {
+  padding: 0.3rem 0;
+  font-size: 0.88rem;
+  color: rgba(240, 230, 211, 0.6);
+}
+
+.footer-nav a,
+.footer-social a {
+  color: rgba(240, 230, 211, 0.6);
+  transition: color 0.2s ease;
+}
+
+.footer-nav a:hover,
+.footer-social a:hover {
+  color: var(--accent);
+}
+
+/* Footer bottom bar */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 1.5rem 3rem;
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: rgba(240, 230, 211, 0.35);
+  font-size: 0.8rem;
+}
+
+/* ============================================================
+   11. UTILITY / MISC
+   ============================================================ */
+
+/* Visually hidden (accessibility) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Smooth section transitions */
+section {
+  transition: background-color 0.35s ease;
+}
+
+/* Horizontal divider accent */
+.divider {
+  width: 60px;
+  height: 3px;
+  background-color: var(--accent);
+  margin: 1.5rem 0;
+}
+
+/* Focus-visible global */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
