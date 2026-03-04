@@ -210,7 +210,7 @@
                for validation and accessibility — JS will populate these at runtime -->
 
           <div class="product-card" data-product-id="0" data-price="3.50" data-name="Single-Origin Espresso">
-            <div class="product-card-icon">☕</div>
+            <img src="images/espresso.jpg" alt="Single-Origin Espresso in a small white cup" class="product-card-img" />
             <div class="product-card-info">
               <h3>Single-Origin Espresso</h3>
               <p>Rotating single-origin pull — bright, sweet, memorable.</p>
@@ -224,7 +224,7 @@
           </div>
 
           <div class="product-card" data-product-id="1" data-price="5.00" data-name="Cappuccino">
-            <div class="product-card-icon">🍵</div>
+            <img src="images/cappuccino.jpg" alt="Cappuccino with thick foam in a ceramic cup" class="product-card-img" />
             <div class="product-card-info">
               <h3>Cappuccino</h3>
               <p>Classic ratio, exceptional beans, thick foam.</p>
@@ -238,7 +238,7 @@
           </div>
 
           <div class="product-card" data-product-id="2" data-price="6.00" data-name="Cold Brew Concentrate">
-            <div class="product-card-icon">🧊</div>
+            <img src="images/cold-brew.jpg" alt="Cold brew coffee over ice in a glass" class="product-card-img" />
             <div class="product-card-info">
               <h3>Cold Brew Concentrate</h3>
               <p>18-hour steep, bold and smooth — zero bitterness.</p>
@@ -252,7 +252,7 @@
           </div>
 
           <div class="product-card" data-product-id="3" data-price="5.50" data-name="Oat Milk Latte">
-            <div class="product-card-icon">☁️</div>
+            <img src="images/oat-latte.jpg" alt="Oat milk latte with latte art in a glass" class="product-card-img" />
             <div class="product-card-info">
               <h3>Oat Milk Latte</h3>
               <p>Double shot, creamy oat, finished with latte art.</p>
@@ -266,7 +266,7 @@
           </div>
 
           <div class="product-card" data-product-id="4" data-price="4.00" data-name="Almond Croissant">
-            <div class="product-card-icon">🥐</div>
+            <img src="images/croissant.jpg" alt="Flaky almond croissant with toasted almond flakes" class="product-card-img" />
             <div class="product-card-info">
               <h3>Almond Croissant</h3>
               <p>Buttery, flaky, frangipane-filled. Baked fresh daily.</p>
@@ -280,7 +280,7 @@
           </div>
 
           <div class="product-card" data-product-id="5" data-price="18.00" data-name="House Blend Bag (250g)">
-            <div class="product-card-icon">📦</div>
+            <img src="images/house-blend.jpg" alt="250g bag of Ember and Roast house blend coffee beans" class="product-card-img" />
             <div class="product-card-info">
               <h3>House Blend Bag (250g)</h3>
               <p>Dark choc, dried cherry, walnut — take the roastery home.</p>
@@ -330,8 +330,10 @@
           <div class="checkout-confirm" id="checkout-confirm" aria-live="polite" hidden>
             <p class="confirm-icon">🎉</p>
             <p class="confirm-heading">Order placed!</p>
+            <p class="confirm-sub-label">You ordered:</p>
+            <ul class="confirm-items-list" id="confirm-items-list"></ul>
             <p id="confirm-total-msg"></p>
-            <p class="confirm-sub">Thank you for your order. We'll have it ready shortly.</p>
+            <p class="confirm-sub">Thank you! We'll have your order ready shortly.</p>
           </div>
 
           <!-- Empty cart warning (hidden until triggered) -->
